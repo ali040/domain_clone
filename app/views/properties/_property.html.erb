@@ -1,29 +1,60 @@
-<div id="<%= dom_id property %>">
-  <p>
-    <strong>Name:</strong>
-    <%= property.name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= property.address %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= property.price %>
-  </p>
-
-  <p>
-    <strong>Room:</strong>
-    <%= property.room %>
-  </p>
-
-  <p>
-    <strong>Bedrooms:</strong>
-    <%= property.bedrooms %>
-  </p>
-
-  <%= image_tag(property.photo)%>
-
+<div class= "property-main-photo"
+style="
+    background-image:url('<%= url_for(@property.photo)%>');
+  ">
+  <div class= "photo-overlay">
+  </div>
 </div>
+
+<div class= "container">
+  <div class= "row">
+    <div class="col-8">
+      <div class= "row">
+        <div class= "col-6">
+          <p class ="mb-0"><%= @property.address%></p>
+          <p class="h2"><%= @property.price > 0 ? number_to_currency(@property.price,precision: 0 ) : "For sale"%></p>
+        </div>
+        <div class="col-6 text-center bg-light p-3">
+          <div class ="row">
+            <div class = "col-4">
+              <p class="m-0"><strong>Rooms</strong></p>
+              <span class="lead"><%= @property.rooms%>
+            </div>
+            <div class = "col-4">
+              <p class="m-0"><strong>Bath Rooms</strong></p></span>
+              <span class="lead"><%= @property.bath_rooms%></span>
+            </div>
+            <div class = "col-4">
+              <p class="m-0" ><strong>Parking Spaces</strong></p>
+              <span class="lead"><%= @property.parking_space%></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class= "row border-top border-bottom mt-5 mb-5 pt-4 pb-4">
+        <div class = "col-6">
+         <strong> <%= link_to "Est. Monthly Repayments of #{number_to_currency((@property.price/ 360),precision: 0 )}","#",class:"text-success"%></strong>
+        </div>
+        <div class = "col-6 text-right">
+          <strong><%= link_to "Can I afford this property?", "#", class:"text-success"%></strong>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col">
+           <p class ="h3"><%= property.name %></p>
+           <p class ="h5">Property Description</p>
+           <div id="prop-details" class="prop-details mb-5">
+            <%= simple_format property.details %>
+           </div>
+           <button class="btn btn-outline-info mt-3">Show more</button>
+           <p>aDdDVG9JYTJWNVNTSWhNemxrZG5SdlpHaHNOWFoyZFhBMmJXNDFOSEU1Y0Rkc09EbHViUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1odmJXVnZkMjVsY25NdGFXNXpkWEpoYm1ObExXWmhZMlZpYjI5ckxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuYUc5dFpXOTNibVZ5Y3kxcGJuTjFjbUZ1WTJVdFptRmpaV0p2YjJzdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMi0wOC0zMVQxNTo1MDo0NC45NzJaIiwicHVyIjoiYmxvYl9rZXk</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <%= render "properties/agent_details"%>
+
+    </div>
+
+  </div>
+  </div>

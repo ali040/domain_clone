@@ -27,6 +27,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "devise"
+gem 'sassc-rails'
 # gem "carrierwave"
 # gem "fog", '~> 1.37.0'
 # gem "mini_magick"

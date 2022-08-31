@@ -1,13 +1,22 @@
+
 <% @properties.each do |property| %>
-    <div class= "col-4">
-        <%=link_to( property_thumbnail(property), property_path(property))%>
-        <h3><%=property.name%></h3>
-        <p><%= property.address%></p>
-        <div class = "amenities">
-            <span><i data-feather = "users"></i></span>
-            <span></span>
-            <span></span>
+    <div class="col-4 mt-5">
+        <div class="card shadow-sm">
+           <%=link_to( property_thumbnail(property,"100%","225px"), property_path(property),class: "bd-placeholder-img card-img-top" )%>
+           <div class="card-body">
+                <h3 class="card-title"><%= link_to property.name ,property_path(property) %></h3>
+                <p class="card-text"><%= property.address%></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="amenities">
+                        <span><i class="bi bi-door-closed-fill"></i> <%= property.rooms%></span> |
+                        <span><i class="bi bi-people"> <%= property.bath_rooms%></i></span> |
+                        <span><i class="bi bi-tag-fill"></i> <%= number_to_currency(property.price ,precision: 0 )%></span>
+                    </div>
+                    <small class="text-muted"><%=created_before_time(property)%></small>
+                 </div>
+            </div>
         </div>
     </div>
 
 <% end %>
+

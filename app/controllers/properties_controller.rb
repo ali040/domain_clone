@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: %i[show edit update destroy]
   before_action :authenticate_account!, only: %i[new create destroy]
   before_action :authenticate_account!
-  before_action :set_sidebar, expect: [:show]
+  before_action :set_sidebar, except: %i[show]
 
   # GET /properties or /properties.json
   def index
@@ -11,6 +11,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @agent = @property.account
   end
 
   # GET /properties/new
@@ -77,6 +78,9 @@ class PropertiesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def set_sidebar
+    @show_sidebar = true
+  end
 
   def set_property
     @property = Property.find(params[:id])
@@ -88,8 +92,10 @@ class PropertiesController < ApplicationController
       :name,
       :address,
       :price,
-      :room,
-      :bedrooms,
+      :rooms,
+      :bath_rooms,
+      :details,
+      :parking_space,
       :photo
     )
   end

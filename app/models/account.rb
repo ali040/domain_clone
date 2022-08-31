@@ -9,4 +9,11 @@ class Account < ApplicationRecord
          :trackable
 
   has_many :properties
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  def company
+    "test Company"
+  end
 end

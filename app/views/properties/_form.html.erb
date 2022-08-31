@@ -17,22 +17,32 @@
   </div>
 
   <div class = "form-group">
-    <%= form.label :room, style: "display: block" %>
-    <%= form.number_field :room, class: "form-control" %>
+    <%= form.label :rooms, style: "display: block" %>
+    <%= form.number_field :rooms, class: "form-control" %>
   </div>
 
   <div class = "form-group">
-    <%= form.label :bedrooms, style: "display: block" %>
-    <%= form.number_field :bedrooms , class: "form-control"%>
+    <%= form.label :bath_rooms, style: "display: block" %>
+    <%= form.number_field :bath_rooms , class: "form-control"%>
+  </div>
+  <div class = "form-group">
+    <%= form.label :parking_space, style: "display: block" %>
+    <%= form.number_field :parking_space , class: "form-control"%>
+  </div>
+  <div class = "form-group">
+    <%= form.label :details, style: "display: block" %>
+    <%= form.text_area :details , class: "form-control"%>
   </div>
   <div class = "form-group">
     <%= form.label :photo%>
     <%= form.file_field :photo, class: "form-control"%>
     <%= form.hidden_field :photo_cache%>
   </div>
-  <%if @property.photo.present?%>
-  <%= property_thumbnail(@property)%>
-  <%end%>
+  <div class = "mt-5">
+    <%if @property.photo.present?%>
+    <%= property_thumbnail(@property,"250px","250px")%>
+    <%end%>
+  </div>
 
   <div class="form-group">
     <%= form.submit "Submit", class:"btn btn-lg mt-3 btn-success"%>
